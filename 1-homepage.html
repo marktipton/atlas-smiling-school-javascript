@@ -222,6 +222,10 @@
               });
 
               $(".carousel").show();
+            },
+            error: function() {
+              hideLoader();
+              console.log("error getting api");
             }
           });
         }
