@@ -193,6 +193,27 @@
             },
             success: function(response) {
               hideLoader();
+
+              var carouselHtml = "";
+              // populate html with data from api
+              $.each(response, function(index, item) {
+                carouselHtml += `
+                  <div class="carousel-item">
+                    <div class="row mx-auto align-items-center">
+                      <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
+                        <img src="${item.image}" class="d-block align-self-center" alt="Carousel Pic ${index + 1}" />
+                      </div>
+                      <div class="col-12 col-sm-7 offset-sm-2 col-lg-9 offset-lg-0">
+                        <div class="quote-text">
+                          <p class="text-white">${item.quote}</p>
+                          <h4 class="text-white font-weight-bold">${item.name}</h4>
+                          <span class="text-white">${item.title}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+              });
             }
           });
         }
