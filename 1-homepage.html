@@ -174,5 +174,29 @@
         </div>
       </section>
     </main>
+    <script>
+      $(document.ready(function() {
+        function showLoader() {
+
+        }
+
+        function hideLoader() {
+
+        }
+
+        function fetchData() {
+          $.ajax({
+            url:  "https://smileschool-api.hbtn.info/quotes",
+            method: "GET",
+            beforeSend: function() {
+              showLoader();
+            }
+          },
+          success: function(response) {
+            hideLoader();
+          });
+        }
+      }))
+    </script>
   </body>
 </html>
