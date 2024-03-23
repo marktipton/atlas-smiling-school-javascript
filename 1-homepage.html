@@ -175,7 +175,7 @@
       </section>
     </main>
     <script>
-      $(document.ready(function() {
+      $(document).ready(function() {
         function showLoader() {
           $(".loader").show();
         }
@@ -184,19 +184,20 @@
           $(".loader").hide();
         }
 
-        function fetchData() {
+        function fetchCarouselData() {
           $.ajax({
             url:  "https://smileschool-api.hbtn.info/quotes",
             method: "GET",
             beforeSend: function() {
               showLoader();
+            },
+            success: function(response) {
+              hideLoader();
             }
-          },
-          success: function(response) {
-            hideLoader();
           });
         }
-      }))
+        fetchCarouselData();
+      });
     </script>
   </body>
 </html>
