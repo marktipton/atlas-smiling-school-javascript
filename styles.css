@@ -245,6 +245,10 @@
 .quotes .quote-text {
   max-width: 800px;
 }
+
+.quotes .arrows {
+  width: 100%;
+}
 /* .quotes .carousel-control-prev.arrow-left {
   padding-right: var(--quotes-arrows-pad);
 }
