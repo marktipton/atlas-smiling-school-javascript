@@ -206,6 +206,11 @@
                 arrows: false
               });
 
+              // prevent default behavior for anchor tag arrows
+              $(".carousel-control-prev, .carousel-control-next").click(function(e) {
+                e.preventDefault();
+              });
+
               $(".arrow-left").click(function() {
                 $(".carousel").slick("slickPrev");
               });
