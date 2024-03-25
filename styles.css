@@ -222,6 +222,10 @@
   font-size: 22px;
 }
 
+.carousel-item .row .pic {
+  margin-left: 0px;
+}
+
 .carousel-control-prev img,
 .carousel-control-next img {
   width: 30px;
