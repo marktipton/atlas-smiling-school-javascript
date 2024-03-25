@@ -226,6 +226,11 @@
   margin-left: 0px;
 }
 
+.carousel-control-next,
+.carousel-control-prev {
+  position:  relative !important;
+}
+
 .carousel-control-prev img,
 .carousel-control-next img {
   width: 30px;
