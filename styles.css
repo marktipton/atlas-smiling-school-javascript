@@ -212,6 +212,7 @@
   font-size: 22px;
   line-height: 34px;
   margin-bottom: 22px;
+  width: 100%;
 }
 
 .quote-text h4 {
@@ -229,6 +230,7 @@
 .carousel-control-next,
 .carousel-control-prev {
   position:  relative !important;
+  width: 30px !important;
 }
 
 .carousel-control-prev img,
@@ -236,13 +238,13 @@
   width: 30px;
 }
 
-.quotes .carousel-control-prev.arrow-left {
+/* .quotes .carousel-control-prev.arrow-left {
   padding-right: var(--quotes-arrows-pad);
 }
 
 .quotes .carousel-control-next.arrow-right {
   padding-left: var(--quotes-arrows-pad);
-}
+} */
 
 /* dynamic carousel loader */
 
