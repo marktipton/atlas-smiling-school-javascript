@@ -247,6 +247,11 @@
   margin: auto;
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 @media screen and (max-width: 991px) {
   .quotes .carousel-item img {
     margin-left: 80px;
