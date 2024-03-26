@@ -251,6 +251,45 @@
           });
         }
         fetchCarouselData();
+
+        function fetchTutorialsData() {
+          $.ajax({
+            url: "https://smileschool-api.hbtn.info/popular-tutorials",
+            method: "GET",
+            beforeSend: function() {
+              showLoader();
+            },
+            success: function(response) {
+              hideLoader();
+
+              var tutorialsHtml = "";
+              $.each(response, function(index, item) {
+                tutorialsHtml += `
+                          <div class="carousel-item zindex-1">
+                            <div class="row mx-auto align-items-center">
+                              <div class="">
+                                <img src="${item.thumb_url}" class="d-block align-self-center" alt="Tutorial Thumbnail ${index + 1}" />
+                              </div>
+                              <div class="">
+                                <div class="tutorial-info">
+                                  <p class="text-white text-wrap">${item.title}</p>
+                                  <span class="text-white">${item.author}</span>
+                                  <span class="text-white">${item.duration}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        `;
+              });
+
+              $(".carousel-tutorials").html(tutorialsHtml);
+
+              $(".carousel-tutorials").slick({
+                arrows: false
+              });
+            }
+          })
+        }
       });
     </script>
   </body>
