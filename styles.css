@@ -364,6 +364,11 @@
   width: 60px;
 }
 
+.popular .carousel-control-prev.arrow-left-latest,
+.popular .carousel-control-next.arrow-right-latest {
+  width: 60px;
+}
+
 .popular .arrows {
   width: 100%;
 }
