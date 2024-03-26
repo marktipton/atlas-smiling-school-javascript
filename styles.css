@@ -359,18 +359,32 @@
   line-height: 24px;
 }
 
-.popular .carousel-control-prev,
-.popular .carousel-control-next {
+.popular .carousel-control-prev.arrow-left-tutorials,
+.popular .carousel-control-next.arrow-right-tutorials {
   width: 60px;
 }
 
-.popular .carousel-control-prev.arrow-left {
+.popular .arrows {
+  width: 100%;
+}
+
+/* .popular .carousel-control-prev.arrow-left-tutorials {
   left: var(--popular-arrows-x);
 }
 
-.popular .carousel-control-next.arrow-right {
+.popular .carousel-control-next.arrow-right-tutorials {
   right: var(--popular-arrows-x);
+} */
+
+/* .popular .carousel-control-prev.arrow-left-tutorials {
+  bottom: var(--arrow-move-y);
+  left: var(--arrow-move-x);
 }
+
+.popular .carousel-control-next.arrow-right-tutorials {
+  bottom: var(--arrow-move-y);
+  right: var(--arrow-move-x);
+} */
 
 @media screen and (max-width: 1280px) {
   :root {
