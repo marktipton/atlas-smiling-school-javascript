@@ -264,23 +264,48 @@
 
               var tutorialsHtml = "";
               $.each(response, function(index, item) {
+                console.log(item);
                 tutorialsHtml += `
-                          <div class="carousel-item zindex-1">
-                            <div class="row mx-auto align-items-center">
-                              <div class="">
-                                <img src="${item.thumb_url}" class="d-block align-self-center" alt="Tutorial Thumbnail ${index + 1}" />
-                              </div>
-                              <div class="">
-                                <div class="tutorial-info">
-                                  <p class="text-white text-wrap">${item.title}</p>
-                                  <span class="text-white">${item.author}</span>
-                                  <span class="text-white">${item.duration}</span>
-                                </div>
-                              </div>
-                            </div>
+                  <div class="col-12 col-sm-6 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-end justify-content-lg-center">
+                    <div class="card">
+                      <img src="${item.thumb_url}" class="card-img-top" alt="Video thumbnail" />
+                      <div class="card-img-overlay text-center">
+                        <img src="images/play.png" alt="Play" width="64px" class="align-self-center play-overlay" />
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title font-weight-bold">${item.title}</h5>
+                        <p class="card-text text-muted">${item["sub-title"]}</p>
+                        <div class="creator d-flex align-items-center">
+                          <img src="${item.author_pic_url}" alt="Creator of Video" width="30px" class="rounded-circle" />
+                          <h6 class="pl-3 m-0 main-color">${item.author}</h6>
+                        </div>
+                        <div class="info pt-3 d-flex justify-content-between">
+                          <div class="rating">`;
+
+                for (let i = 1; i <= 5; i++) {
+                  if (i <= item.star) {
+                    tutorialsHtml += `<img src="images/star_on.png" alt="star on" width="15px" />`;
+                  } else {
+                    tutorialsHtml += `<img src="images/star_off.png" alt="star off" width="15px" />`;
+                  }
+                }
+
+                tutorialsHtml += `
                           </div>
-                        `;
+                          <span class="main-color">${item.duration}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`;
               });
+
+              tutorialsHtml += `
+                  </div>
+                </div>`;
+
+              $(".carousel-tutorials").html(tutorialsHtml);
+
+
 
               $(".carousel-tutorials").html(tutorialsHtml);
 
