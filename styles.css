@@ -361,6 +361,11 @@
   padding-bottom: 87px;
 }
 
+.popular .rating {
+  display: flex;
+  align-items: flex-start;
+}
+
 .section .card-img-overlay {
   /* top: 25px; */
   top: 5%;
