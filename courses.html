@@ -969,20 +969,22 @@
     <!-- dynamic search script -->
     <script>
       $(document).ready(function() {
-        function fetchVideoData(url, targetElement) {
+        function fetchVideoData(keyword = '', topic = 'all', sort = 'most_popular') {
           $.ajax({
             url: "https://smileschool-api.hbtn.info/courses",
             method: "GET",
             success: function(response) {
-
+              populateDropdown(targetElement, response);
             },
             error: function() {
-              console.log("Error fetching courses data");
+              console.log("Error fetching video courses data");
             }
 
           });
         }
-      })
+
+        fetchVideoData()
+      });
     </script>
   </body>
 </html>
