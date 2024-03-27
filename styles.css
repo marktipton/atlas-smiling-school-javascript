@@ -243,7 +243,7 @@
 }
 
 .quotes .quote-text {
-  max-width: 800px;
+  max-width: 730px;
 }
 
 .quotes .arrows {
@@ -282,12 +282,28 @@
   .quote-text {
     padding-left: 43px;
   }
+  .quotes .quote-text {
+    max-width: 370px;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .quotes .carousel-item img {
-    margin-left: 40px;
+    margin-left: 20px;
   }
+  .quotes .container {
+    min-width: 576;
+  }
+  .quotes .quote-text {
+    padding-left: 10px;
+  }
+  .quotes img {
+    margin-left: 0px !important;
+  }
+  /* .quotes .container .col-12 {
+    min-width: 576px !important;
+  } */
+
 }
 
 @media screen and (max-width: 575px) {
@@ -296,7 +312,8 @@
     --arrow-move-x: 13px;
   }
   .quotes {
-    height: auto;
+    height: 591px;
+
   }
   .quotes .carousel-item img {
     margin: 90px auto 0 auto;
