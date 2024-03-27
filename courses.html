@@ -42,9 +42,6 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <!-- JS Carousel -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
   </head>
   <body class="body">
@@ -111,6 +108,7 @@
       </div>
     </header>
     <main>
+  <!-- ........................dynamic search section.................................. -->
       <section class="section search">
         <div class="container">
           <div class="row py-4">
@@ -968,5 +966,23 @@
         </div>
       </div>
     </footer>
+    <!-- dynamic search script -->
+    <script>
+      $(document).ready(function() {
+        function fetchVideoData(url, targetElement) {
+          $.ajax({
+            url: "https://smileschool-api.hbtn.info/courses",
+            method: "GET",
+            success: function(response) {
+
+            },
+            error: function() {
+              console.log("Error fetching courses data");
+            }
+
+          });
+        }
+      })
+    </script>
   </body>
 </html>
