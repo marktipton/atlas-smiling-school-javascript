@@ -395,6 +395,10 @@
   width: 100%;
 }
 
+.slick-slide .card-img-overlay img {
+  display: inline !important;
+}
+
 /* .popular .carousel-control-prev.arrow-left-tutorials {
   left: var(--popular-arrows-x);
 }
