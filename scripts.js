@@ -124,7 +124,21 @@ $(document).ready(function() {
         $(".carousel-tutorials").slick({
           arrows: false,
           slidesToShow: 4,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2
+              }
+            },
+            {
+              breakpoint: 576,
+              settings: {
+                slidesToShow: 1
+              }
+            }
+          ]
         });
 
         $(".arrow-left-tutorials, .arrow-right-tutorials").click(function(e) {
@@ -207,7 +221,21 @@ $(document).ready(function() {
         $(".carousel-latest").slick({
           arrows: false,
           slidesToShow: 3,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2
+              }
+            },
+            {
+              breakpoint: 576,
+              settings: {
+                slidesToShow: 1
+              }
+            }
+          ]
         });
 
         $(".arrow-left-latest, .arrow-right-latest").click(function(e) {
