@@ -321,15 +321,15 @@ $(document).ready(function() {
     sortByItemsHtml = '';
 
     const sortDisplayText = {
-      'most_popular': 'Most Popular',
-      'most_recent': 'Most Recent',
-      'most_viewed': 'Most Viewed'
+      'most_popular': 'Most popular',
+      'most_recent': 'Most recent',
+      'most_viewed': 'Most viewed'
       // Add more mappings as needed
     };
 
     sorts.forEach(function(sort) {
       const displayText = sortDisplayText[sort] || sort;
-      sortByItemsHtml += `<a class="dropdown-item" href="#">${displayText}}</a>`;
+      sortByItemsHtml += `<a class="dropdown-item" href="#">${displayText}</a>`;
     });
 
     sortByMenu.innerHTML = sortByItemsHtml;
