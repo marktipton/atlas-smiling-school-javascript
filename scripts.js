@@ -266,6 +266,7 @@ $(document).ready(function() {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/courses",
       method: "GET",
+      data: { q: keyword},
       success: function(response) {
         displayVideos(response.courses);
       },
