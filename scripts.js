@@ -269,6 +269,7 @@ $(document).ready(function() {
       data: { q: keyword},
       success: function(response) {
         displayVideos(response.courses);
+        populateTopicDropdown(response.topics);
       },
       error: function() {
         console.log("Error fetching video courses data");
@@ -303,6 +304,16 @@ $(document).ready(function() {
           </div>
     `;
   }
+
+  function populateTopicDropdown(topics) {
+    const topicDropdown = $("#topicDropdown");
+    let topicItemsHtml = "";
+    topics.forEach(topic => {
+      topicItemsHtml += `<a class="dropdown-item" href="#">${topic}</a>`;
+    });
+    topicDropdown.html(topicItemsHtml);
+  }
+
   function displayVideos(data) {
     const videoCardsRow = $("#videoCardsRow");
     let videoCardsHtml = '';
@@ -314,14 +325,8 @@ $(document).ready(function() {
     $(".video-count").text(data.length + " videos");
   }
 
-  // $(".search-text-area").on("input", function() {
-  //   console.log("i am being clicked!!!!");
-  //   const keyword = $(this).val().trim();
-  //   fetchVideoData(keyword);
-  // });
-
   $(".holberton_school-icon-search_1").on("click", function() {
-    console.log("i am being clicked!!!!");
+    // console.log("i am being clicked!!!!");
     const keyword = $(".search-text-area").val().trim();
     fetchVideoData(keyword);
   });
