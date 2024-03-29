@@ -321,7 +321,8 @@ $(document).ready(function() {
   // });
 
   $(".holberton_school-icon-search_1").on("click", function() {
-    const keyword = $(this).val().trim();
+    console.log("i am being clicked!!!!");
+    const keyword = $(".search-text-area").val().trim();
     fetchVideoData(keyword);
   });
 
