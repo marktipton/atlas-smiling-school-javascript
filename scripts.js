@@ -326,5 +326,12 @@ $(document).ready(function() {
     fetchVideoData(keyword);
   });
 
+  $(".search-text-area").keypress(function(event) {
+    if (event.keyCode === 13) {
+      const keyword = $(this).val().trim();
+      fetchVideoData(keyword);
+    }
+  });
+
   fetchVideoData();
 });
