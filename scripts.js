@@ -261,6 +261,7 @@ $(document).ready(function() {
   fetchLatestVideosData();
 
 // ......................video search script>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
   function fetchVideoData(keyword = '', topic = 'all', sort = 'most_popular') {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/courses",
@@ -272,10 +273,6 @@ $(document).ready(function() {
         console.log("Error fetching video courses data");
       }
     });
-  }
-
-  function displayVideos(videos, keyword, topic, sort) {
-
   }
 
   function createVideoCard(video) {
@@ -315,6 +312,12 @@ $(document).ready(function() {
 
     $(".video-count").text(data.length + " videos");
   }
+
+  $(".search-text-area").on("input", function() {
+    console.log("i am being clicked!!!!");
+    const keyword = $(this).val().trim();
+    fetchVideoData(keyword);
+  });
 
   fetchVideoData();
 });
