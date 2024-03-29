@@ -270,6 +270,7 @@ $(document).ready(function() {
       success: function(response) {
         displayVideos(response.courses);
         populateTopicDropdown(response.topics);
+        populateSortDropdown(response.sorts, response.sort);
       },
       error: function() {
         console.log("Error fetching video courses data");
@@ -314,6 +315,22 @@ $(document).ready(function() {
     topicDropdown.html(topicItemsHtml);
   }
 
+  function populateSortDropdown(sorts, defaultSort) {
+    var sortByMenu = document.querySelector('.box3 .dropdown-menu');
+
+    sortByItemsHtml = '';
+
+    sorts.forEach(function(sort) {
+      sortByItemsHtml += `<a class="dropdown-item" href="#">${sort}}</a>`;
+    });
+
+    sortByMenu.innerHTML = sortByItemsHtml;
+    var defaultItem = sortByMenu.querySelector(`a[href="#${defaultSort}"]`);
+    if (defaultItem) {
+      defaultItem.classList.add('active');
+    }
+  }
+
   function displayVideos(data) {
     const videoCardsRow = $("#videoCardsRow");
     let videoCardsHtml = '';
@@ -337,6 +354,6 @@ $(document).ready(function() {
       fetchVideoData(keyword);
     }
   });
-
+  // populateSortDropdown(data.sorts, data.sort);
   fetchVideoData();
 });
