@@ -266,7 +266,7 @@ $(document).ready(function() {
       url: "https://smileschool-api.hbtn.info/courses",
       method: "GET",
       success: function(response) {
-        displayVideos(response, keyword, topic, sort);
+        displayVideos(response.courses);
       },
       error: function() {
         console.log("Error fetching video courses data");
@@ -275,30 +275,46 @@ $(document).ready(function() {
   }
 
   function displayVideos(videos, keyword, topic, sort) {
-    // filter videos by keyword
-    if (keyword.trim() !== '') {
-      videos = videos.filter(video => video.keywords.includes(keyword));
-    }
-    // filter videos by topic
-    if (topic !== 'all') {
-      videos = videos.filter(video => video.topic === topic);
-    }
-    // sort option
-    switch (sort) {
-      case 'most_recent':
-        videos.sort((a, b) => b.published_at - a.published_at);
-        break;
-      case 'most_viewed':
-        videos.sort((a, b) => b.views - a.views);
-        break;
-      default:
-        videos.sort((a, b) => b.views - a.views);
-    }
 
-    videos.forEach(video => console.log(video.title));
   }
 
-  $('.search-text-area')
+  function createVideoCard(video) {
+    return `
+          <div class="col-12 col-sm-4 col-lg-3 d-flex justify-content-center">
+            <div class="card">
+              <img src="${video.thumb_url}" class="card-img-top" alt="Video thumbnail">
+              <div class="card-img-overlay text-center">
+                <img src="images/play.png" alt="Play" width="64px" class="align-self-center play-overlay">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title font-weight-bold">${video.title}</h5>
+                <p class="card-text text-muted">${video['sub-title']}</p>
+                <div class="creator d-flex align-items-center">
+                  <img src="${video.author_pic_url}" alt="Creator of Video" width="30px" class="rounded-circle">
+                  <h6 class="pl-3 m-0 main-color">${video.author}</h6>
+                </div>
+                <div class="info pt-3 d-flex justify-content-between">
+                  <div class="rating">
+                    ${'<img src="images/star_on.png" alt="star on" width="15px">'.repeat(video.star)}
+                    ${'<img src="images/star_off.png" alt="star off" width="15px">'.repeat(5 - video.star)}
+                  </div>
+                  <span class="main-color">${video.duration}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+    `;
+  }
+  function displayVideos(data) {
+    const videoCardsRow = $("#videoCardsRow");
+    let videoCardsHtml = '';
+    data.forEach(video => {
+      videoCardsHtml += createVideoCard(video);
+    });
+    videoCardsRow.html(videoCardsHtml);
 
-  fetchVideoData()
+    $(".video-count").text(data.length + " videos");
+  }
+
+  fetchVideoData();
 });
