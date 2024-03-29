@@ -393,7 +393,12 @@
 
 .popular .arrows {
   width: 100%;
+  z-index: 1000 !important;
 }
+/*
+.slickslider {
+  z-index: -1 !important;
+} */
 
 .slick-slide .card-img-overlay img {
   display: inline !important;

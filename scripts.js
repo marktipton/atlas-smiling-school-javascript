@@ -259,6 +259,7 @@ $(document).ready(function() {
     });
   }
   fetchLatestVideosData();
+
 // ......................video search script>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   function fetchVideoData(keyword = '', topic = 'all', sort = 'most_popular') {
     $.ajax({

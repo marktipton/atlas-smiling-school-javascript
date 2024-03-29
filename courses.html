@@ -968,49 +968,5 @@
       </div>
     </footer>
 
-    <script>
-      $(document).ready(function() {
-        function fetchVideoData(keyword = '', topic = 'all', sort = 'most_popular') {
-          $.ajax({
-            url: "https://smileschool-api.hbtn.info/courses",
-            method: "GET",
-            success: function(response) {
-              displayVideos(response, keyword, topic, sort);
-            },
-            error: function() {
-              console.log("Error fetching video courses data");
-            }
-          });
-        }
-
-        function displayVideos(videos, keyword, topic, sort) {
-          // filter videos by keyword
-          if (keyword.trim() !== '') {
-            videos = videos.filter(video => video.keywords.includes(keyword));
-          }
-          // filter videos by topic
-          if (topic !== 'all') {
-            videos = videos.filter(video => video.topic === topic);
-          }
-          // sort option
-          switch (sort) {
-            case 'most_recent':
-              videos.sort((a, b) => b.published_at - a.published_at);
-              break;
-            case 'most_viewed':
-              videos.sort((a, b) => b.views - a.views);
-              break;
-            default:
-              videos.sort((a, b) => b.views - a.views);
-          }
-
-          videos.forEach(video => console.log(video.title));
-        }
-
-        $('.search-text-area')
-
-        fetchVideoData()
-      });
-    </script>
   </body>
 </html>
