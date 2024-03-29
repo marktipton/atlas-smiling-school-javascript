@@ -314,8 +314,13 @@ $(document).ready(function() {
     $(".video-count").text(data.length + " videos");
   }
 
-  $(".search-text-area").on("input", function() {
-    console.log("i am being clicked!!!!");
+  // $(".search-text-area").on("input", function() {
+  //   console.log("i am being clicked!!!!");
+  //   const keyword = $(this).val().trim();
+  //   fetchVideoData(keyword);
+  // });
+
+  $(".holberton_school-icon-search_1").on("click", function() {
     const keyword = $(this).val().trim();
     fetchVideoData(keyword);
   });
