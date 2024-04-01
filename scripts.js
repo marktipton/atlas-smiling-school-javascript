@@ -22,7 +22,7 @@ $(document).ready(function() {
         $.each(response, function(index, item) {
           console.log(item);
           carouselHtml += `
-            <div class="carousel-item">
+            <div class="slick-slide">
               <div class="row mx-auto align-items-center">
                 <div class="">
                   <img src="${item.pic_url}" class="d-block align-self-center" alt="Carousel Pic ${index + 1}" />
@@ -39,9 +39,9 @@ $(document).ready(function() {
           `;
         });
 
-        $(".carousel").html(carouselHtml);
+        $(".slick-carousel").html(carouselHtml);
 
-        $(".carousel").slick({
+        $(".slick-carousel").slick({
           arrows: false
         });
 
@@ -51,14 +51,14 @@ $(document).ready(function() {
         });
 
         $(".arrow-left").click(function() {
-          $(".carousel").slick("slickPrev");
+          $(".slick-carousel").slick("slickPrev");
         });
 
         $(".arrow-right").click(function() {
-          $(".carousel").slick("slickNext");
+          $(".slick-carousel").slick("slickNext");
         });
 
-        $(".carousel").show();
+        $(".slick-carousel").show();
       },
       error: function() {
         hideLoader();
@@ -220,7 +220,7 @@ $(document).ready(function() {
 
         $(".carousel-latest").slick({
           arrows: false,
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 1,
           responsive: [
             {
