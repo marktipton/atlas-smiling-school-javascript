@@ -267,7 +267,7 @@ $(document).ready(function() {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/courses",
       method: "GET",
-      data: { q: keyword},
+      data: { q: keyword, topic: topic},
       success: function(response) {
         displayVideos(response.courses);
         populateTopicDropdown(response.topics);
@@ -314,6 +314,14 @@ $(document).ready(function() {
       topicItemsHtml += `<a class="dropdown-item" href="#">${topic}</a>`;
     });
     topicDropdown.html(topicItemsHtml);
+
+    topicDropdown.find('.dropdown-item').click(function() {
+      const selectedTopic = $(this).data('topic');
+      fetchVideoData('', selectedTopic);
+
+      const dropdownText = $(this).text();
+      $(this).closest('.dropdown').find('.btn span').text(dropdownText);
+    });
   }
 
   function populateSortDropdown(sorts, defaultSort) {
