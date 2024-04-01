@@ -311,7 +311,8 @@ $(document).ready(function() {
     const topicDropdown = $("#topicDropdown");
     let topicItemsHtml = "";
     topics.forEach(topic => {
-      topicItemsHtml += `<a class="dropdown-item" href="#">${topic}</a>`;
+      const capitalizedTopic = topic.charAt(0).toUpperCase() + topic.slice(1);
+      topicItemsHtml += `<a class="dropdown-item" href="#">${capitalizedTopic}</a>`;
     });
     topicDropdown.html(topicItemsHtml);
 
