@@ -24,10 +24,10 @@ $(document).ready(function() {
           carouselHtml += `
             <div class="slick-slide">
               <div class="row mx-auto align-items-center">
-                <div class="">
+                <div class="col-12 col-sm-2 col-lg-2 offset-lg-1 text-center">
                   <img src="${item.pic_url}" class="d-block align-self-center" alt="Carousel Pic ${index + 1}" />
                 </div>
-                <div class="">
+                <div class="col-12 col-sm-7 offset-sm-2 col-lg-9 offset-lg-0">
                   <div class="quote-text">
                     <p class="text-white text-wrap">${item.text}</p>
                     <h4 class="text-white font-weight-bold">${item.name}</h4>

@@ -193,7 +193,7 @@
   background-color: var(--main-color);
 }
 
-.quotes .carousel-item img {
+.quotes .slick-slide img {
   width: 160px;
   border-radius: 75px;
   margin-left: 10px;
@@ -212,7 +212,6 @@
   font-size: 22px;
   line-height: 34px;
   margin-bottom: 22px;
-  width: 100%;
 }
 
 .quote-text h4 {
@@ -242,9 +241,9 @@
   position: absolute;
 }
 
-.quotes .quote-text {
+/* .quotes .quote-text {
   max-width: 730px;
-}
+} */
 
 .quotes .arrows {
   width: 100%;
@@ -276,7 +275,7 @@
 }
 
 @media screen and (max-width: 991px) {
-  .quotes .carousel-item img {
+  .quotes .slick-slide img {
     margin-left: 80px;
   }
   .quote-text {
@@ -288,7 +287,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .quotes .carousel-item img {
+  .quotes .slick-slide img {
     margin-left: 20px;
   }
   .quotes .container {
@@ -311,15 +310,15 @@
     --arrow-move-y: 40%;
     --arrow-move-x: 13px;
   }
-  .quotes {
+  /* .quotes {
     height: 591px;
 
-  }
-  .quotes .carousel-item img {
+  } */
+  .quotes .slick-slide img {
     margin: 90px auto 0 auto;
     padding-bottom: 10px;
   }
-  .quotes .carousel-item .quote-text {
+  .quotes .slcik-slide .quote-text {
     padding-bottom: 103px;
   }
 
