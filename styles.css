@@ -226,11 +226,11 @@
   margin-left: 0px;
 }
 
-.carousel-control-next,
+/* .carousel-control-next,
 .carousel-control-prev {
   position:  relative !important;
   width: 30px !important;
-}
+} */
 
 .carousel-control-prev img,
 .carousel-control-next img {
