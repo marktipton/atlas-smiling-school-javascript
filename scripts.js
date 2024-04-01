@@ -175,8 +175,9 @@ $(document).ready(function() {
       success: function(response) {
         hideLoader();
 
+        const responseData = response.concat(response);
         var latestVideosHtml = "";
-        $.each(response, function(index, item) {
+        $.each(responseData, function(index, item) {
           console.log(item);
           latestVideosHtml += `
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-end justify-content-lg-center zindex-1">
