@@ -326,9 +326,9 @@ $(document).ready(function() {
   }
 
   function populateSortDropdown(sorts, defaultSort) {
-    var sortByMenu = document.querySelector('.box3 .dropdown-menu');
+    const sortByMenu = $('.box3 .dropdown-menu');
 
-    sortByItemsHtml = '';
+    let sortByItemsHtml = '';
 
     const sortDisplayText = {
       'most_popular': 'Most popular',
@@ -342,11 +342,15 @@ $(document).ready(function() {
       sortByItemsHtml += `<a class="dropdown-item" href="#">${displayText}</a>`;
     });
 
-    sortByMenu.innerHTML = sortByItemsHtml;
-    var defaultItem = sortByMenu.querySelector(`a[href="#${defaultSort}"]`);
-    if (defaultItem) {
-      defaultItem.classList.add('active');
-    }
+    sortByMenu.html(sortByItemsHtml);
+
+    sortByMenu.find('.dropdown-item').click(function() {
+      const selectedSort = $(this).data('sort');
+      fetchVideoData('', '', selectedSort);
+
+      const dropdownText = $(this).text();
+      $(this).closest('.dropdown').find('.btn span').text(dropdownText);
+    });
   }
 
   function displayVideos(data) {
