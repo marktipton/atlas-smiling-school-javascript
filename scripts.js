@@ -330,7 +330,7 @@ $(document).ready(function() {
     let topicItemsHtml = "";
     topics.forEach(topic => {
       const capitalizedTopic = topic.charAt(0).toUpperCase() + topic.slice(1);
-      topicItemsHtml += `<a class="dropdown-item" href="#">${capitalizedTopic}</a>`;
+      topicItemsHtml += `<a class="dropdown-item" data-topic="${topic}" href="#">${capitalizedTopic}</a>`;
     });
     topicDropdown.html(topicItemsHtml);
 
@@ -358,7 +358,7 @@ $(document).ready(function() {
 
     sorts.forEach(function(sort) {
       const displayText = sortDisplayText[sort] || sort;
-      sortByItemsHtml += `<a class="dropdown-item" href="#">${displayText}</a>`;
+      sortByItemsHtml += `<a class="dropdown-item" data-topic="${sort}" href="#">${displayText}</a>`;
     });
 
     sortByMenu.html(sortByItemsHtml);
