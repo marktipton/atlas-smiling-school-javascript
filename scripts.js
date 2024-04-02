@@ -280,7 +280,7 @@ $(document).ready(function() {
     }
   });
 
-  function fetchVideoData(keyword = '', topic = 'all', sort = 'most_popular') {
+  function fetchVideoData(keyword, topic = 'all', sort = 'most_popular') {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/courses",
       method: "GET",
