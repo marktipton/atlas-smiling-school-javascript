@@ -265,31 +265,23 @@ $(document).ready(function() {
 
   let currentKeyword = '';
   let currentTopic = 'all';
+  let currentSort = 'most_popular';
 
   $(".holberton_school-icon-search_1").on("click", function() {
     // console.log("i am being clicked!!!!");
     const keyword = $(".search-text-area").val().trim();
     currentKeyword = keyword;
-    fetchVideoData(currentKeyword, selectedTopic);
+    fetchVideoData(currentKeyword, selectedTopic, currentSort);
   });
 
   $(".search-text-area").keypress(function(event) {
     if (event.keyCode === 13) {
       const keyword = $(this).val().trim();
       currentKeyword = keyword;
-      fetchVideoData(currentKeyword, selectedTopic);
+      fetchVideoData(currentKeyword, selectedTopic, currentSort);
     }
   });
 
-  // topicDropdown.find('.dropdown-item').click(function() {
-  //   const selectedTopic = $(this).data('topic');
-  //   currentTopic = selectedTopic;
-  //   console.log(selectedTopic);
-  //   fetchVideoData(currentKeyword, currentTopic);
-
-  //   const dropdownText = $(this).text();
-  //   $(this).closest('.dropdown').find('.btn span').text(dropdownText);
-  // });
 
   function fetchVideoData(keyword, topic = 'all', sort = 'most_popular') {
     $.ajax({
@@ -350,7 +342,7 @@ $(document).ready(function() {
       currentTopic = selectedTopic;
       console.log(selectedTopic);
       console.log(currentTopic);
-      fetchVideoData(currentKeyword, currentTopic);
+      fetchVideoData(currentKeyword, currentTopic, currentSort);
 
       const dropdownText = $(this).text();
       $(this).closest('.dropdown').find('.btn span').text(dropdownText);
@@ -371,15 +363,16 @@ $(document).ready(function() {
 
     sorts.forEach(function(sort) {
       const displayText = sortDisplayText[sort] || sort;
-      sortByItemsHtml += `<a class="dropdown-item" data-topic="${sort}" href="#">${displayText}</a>`;
+      sortByItemsHtml += `<a class="dropdown-item" data-sort="${sort}" href="#">${displayText}</a>`;
     });
 
     sortByMenu.html(sortByItemsHtml);
 
     sortByMenu.find('.dropdown-item').click(function() {
       const selectedSort = $(this).data('sort');
+      currentSort = selectedSort;
       console.log(selectedSort);
-      fetchVideoData(currentKeyword, currentTopic, selectedSort);
+      fetchVideoData(currentKeyword, currentTopic, currentSort);
 
       const dropdownText = $(this).text();
       $(this).closest('.dropdown').find('.btn span').text(dropdownText);
