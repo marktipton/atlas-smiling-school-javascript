@@ -175,9 +175,9 @@ $(document).ready(function() {
       success: function(response) {
         hideLoader();
 
-        const responseData = response.concat(response);
+        const moreData = response.concat(response);
         var latestVideosHtml = "";
-        $.each(responseData, function(index, item) {
+        $.each(moreData, function(index, item) {
           console.log(item);
           latestVideosHtml += `
             <div class="col-12 col-sm-6 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-end justify-content-lg-center zindex-1">
@@ -263,12 +263,30 @@ $(document).ready(function() {
 
 // ......................video search script>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+  let currentKeyword = '';
+
+  $(".holberton_school-icon-search_1").on("click", function() {
+    // console.log("i am being clicked!!!!");
+    const keyword = $(".search-text-area").val().trim();
+    currentKeyword = keyword;
+    fetchVideoData(currentKeyword);
+  });
+
+  $(".search-text-area").keypress(function(event) {
+    if (event.keyCode === 13) {
+      const keyword = $(this).val().trim();
+      currentKeyword = keyword;
+      fetchVideoData(currentKeyword);
+    }
+  });
+
   function fetchVideoData(keyword = '', topic = 'all', sort = 'most_popular') {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/courses",
       method: "GET",
-      data: { q: keyword, topic: topic},
+      data: { q: keyword, topic: topic, sort: sort},
       success: function(response) {
+        console.log(`${keyword}, ${topic}, ${sort}`);
         displayVideos(response.courses);
         populateTopicDropdown(response.topics);
         populateSortDropdown(response.sorts, response.sort);
@@ -318,14 +336,15 @@ $(document).ready(function() {
 
     topicDropdown.find('.dropdown-item').click(function() {
       const selectedTopic = $(this).data('topic');
-      fetchVideoData('', selectedTopic);
+      console.log(selectedTopic);
+      fetchVideoData(currentKeyword, selectedTopic);
 
       const dropdownText = $(this).text();
       $(this).closest('.dropdown').find('.btn span').text(dropdownText);
     });
   }
 
-  function populateSortDropdown(sorts, defaultSort) {
+  function populateSortDropdown(sorts) {
     const sortByMenu = $('.box3 .dropdown-menu');
 
     let sortByItemsHtml = '';
@@ -346,7 +365,8 @@ $(document).ready(function() {
 
     sortByMenu.find('.dropdown-item').click(function() {
       const selectedSort = $(this).data('sort');
-      fetchVideoData('', '', selectedSort);
+      console.log(selectedSort);
+      fetchVideoData(currentKeyword, '', selectedSort);
 
       const dropdownText = $(this).text();
       $(this).closest('.dropdown').find('.btn span').text(dropdownText);
@@ -364,18 +384,18 @@ $(document).ready(function() {
     $(".video-count").text(data.length + " videos");
   }
 
-  $(".holberton_school-icon-search_1").on("click", function() {
-    // console.log("i am being clicked!!!!");
-    const keyword = $(".search-text-area").val().trim();
-    fetchVideoData(keyword);
-  });
+  // $(".holberton_school-icon-search_1").on("click", function() {
+  //   // console.log("i am being clicked!!!!");
+  //   const keyword = $(".search-text-area").val().trim();
+  //   fetchVideoData(keyword);
+  // });
 
-  $(".search-text-area").keypress(function(event) {
-    if (event.keyCode === 13) {
-      const keyword = $(this).val().trim();
-      fetchVideoData(keyword);
-    }
-  });
+  // $(".search-text-area").keypress(function(event) {
+  //   if (event.keyCode === 13) {
+  //     const keyword = $(this).val().trim();
+  //     fetchVideoData(keyword);
+  //   }
+  // });
   // populateSortDropdown(data.sorts, data.sort);
   fetchVideoData();
 });
