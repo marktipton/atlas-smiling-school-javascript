@@ -332,8 +332,8 @@
 }
 
 .popular .arrows {
-  width: 90%;
-  top: 0 !important;
+  width: 95%;
+
 }
 
 .popular .section-header {
@@ -381,20 +381,20 @@
   width: 60px;
 }
 
-.popular .arrows {
+/* .popular .arrows {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
-}
+} */
 
-.arrow-left-tutorials {
+/* .arrow-left-tutorials {
   left: 50% !important;
-}
+} */
 
-.arrow-right-tutorials {
+/* .arrow-right-tutorials {
   right: 0;
-}
+} */
 
 /* .popular .arrows {
   width: 100%;
@@ -409,7 +409,7 @@
   display: inline !important;
 }
 
-.popular .carousel-control-prev.arrow-left-tutorials {
+/* .popular .carousel-control-prev.arrow-left-tutorials {
   left: var(--popular-arrows-x);
 }
 
@@ -425,7 +425,7 @@
 .popular .carousel-control-next.arrow-right-tutorials {
   bottom: var(--arrow-move-y);
   right: var(--arrow-move-x);
-}
+} */
 
 @media screen and (max-width: 1280px) {
   :root {
