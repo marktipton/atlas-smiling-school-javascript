@@ -333,6 +333,7 @@
 
 .popular .arrows {
   width: 90%;
+  top: 0 !important;
 }
 
 .popular .section-header {
