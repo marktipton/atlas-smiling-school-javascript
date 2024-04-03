@@ -323,12 +323,16 @@
 /* POPULAR SECTION  */
 
 .popular {
-  height: auto;
+  height: 800px;
   background-color: var(--color-white);
 }
 
 .popular .container {
-  position: relative;
+  position: absolute;
+}
+
+.popular .arrows {
+  width: 90%;
 }
 
 .popular .section-header {
@@ -384,7 +388,7 @@
 }
 
 .arrow-left-tutorials {
-  left: 0;
+  left: 50% !important;
 }
 
 .arrow-right-tutorials {
