@@ -383,6 +383,10 @@ $(document).ready(function() {
     if (sort === 'most_viewed') {
       data.sort((a, b) => b.views - a.views);
     }
+
+    if (sort === 'most_recent') {
+      data.sort((a, b) => b.published_at - a.published_at);
+    }
     const videoCardsRow = $("#videoCardsRow");
     let videoCardsHtml = '';
     data.forEach(video => {
