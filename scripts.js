@@ -98,6 +98,7 @@ $(document).ready(function() {
                   <div class="info pt-3 d-flex justify-content-between">
                     <div class="rating">`;
 
+          // check stars and add star on/ star off accordingly
           for (let i = 1; i <= 5; i++) {
             if (i <= item.star) {
               tutorialsHtml += `<img src="images/star_on.png" alt="star on" width="15px" />`;
@@ -195,7 +196,7 @@ $(document).ready(function() {
                   </div>
                   <div class="info pt-3 d-flex justify-content-between">
                     <div class="rating">`;
-
+          // check stars and add star on/ star off accordingly
           for (let i = 1; i <= 5; i++) {
             if (i <= item.star) {
               latestVideosHtml += `<img src="images/star_on.png" alt="star on" width="15px" />`;
@@ -287,8 +288,12 @@ $(document).ready(function() {
     $.ajax({
       url: "https://smileschool-api.hbtn.info/courses",
       method: "GET",
+      beforeSend: function() {
+        showLoader();
+      },
       data: { q: keyword, topic: topic, sort: sort},
       success: function(response) {
+        hideLoader();
         console.log(`${keyword}, ${topic}, ${sort}`);
         displayVideos(response.courses, currentSort);
         populateTopicDropdown(response.topics);
@@ -331,6 +336,7 @@ $(document).ready(function() {
   function populateTopicDropdown(topics) {
     const topicDropdown = $("#topicDropdown");
     let topicItemsHtml = "";
+    // take topics from api and dynamically construct dropdown menu
     topics.forEach(topic => {
       const capitalizedTopic = topic.charAt(0).toUpperCase() + topic.slice(1);
       topicItemsHtml += `<a class="dropdown-item" id="topicDropdownItem" data-topic="${topic}" href="#">${capitalizedTopic}</a>`;
@@ -344,6 +350,7 @@ $(document).ready(function() {
       console.log(currentTopic);
       fetchVideoData(currentKeyword, currentTopic, currentSort);
 
+      // Change top text of dropdown menu to dropdown item selected
       const dropdownText = $(this).text();
       $(this).closest('.dropdown').find('.btn span').text(dropdownText);
     });
@@ -353,14 +360,14 @@ $(document).ready(function() {
     const sortByMenu = $('.box3 .dropdown-menu');
 
     let sortByItemsHtml = '';
-
+    // change dropdown menu text to correct format
     const sortDisplayText = {
       'most_popular': 'Most popular',
       'most_recent': 'Most recent',
       'most_viewed': 'Most viewed'
-      // Add more mappings as needed
     };
 
+    // take sorts data from api and dynamically construct dropdown menu
     sorts.forEach(function(sort) {
       const displayText = sortDisplayText[sort] || sort;
       sortByItemsHtml += `<a class="dropdown-item" data-sort="${sort}" href="#">${displayText}</a>`;
@@ -374,6 +381,7 @@ $(document).ready(function() {
       console.log(selectedSort);
       fetchVideoData(currentKeyword, currentTopic, currentSort);
 
+      // Change top text of dropdown menu to dropdown item selected
       const dropdownText = $(this).text();
       $(this).closest('.dropdown').find('.btn span').text(dropdownText);
     });
@@ -381,10 +389,12 @@ $(document).ready(function() {
 
   function displayVideos(data, sort) {
     if (sort === 'most_viewed') {
+      // sort in order of most to least views
       data.sort((a, b) => b.views - a.views);
     }
 
     if (sort === 'most_recent') {
+      // sort from most recent published date to oldest
       data.sort((a, b) => b.published_at - a.published_at);
     }
     const videoCardsRow = $("#videoCardsRow");
